@@ -1,6 +1,7 @@
 import Head from 'next/head';
+import LayoutComplete2 from '../Components/Principal/LayaoutCompleteNew';
+// import LayoutCompleted from '../Components/Principal/LayoutComplete';
 import DashboardLayout from '../Components/Dashboard/DashboardLayout';
-import LayoutCompleted from '../Components/Principal/LayoutComplete';
 
 export default function Home() {
   return (
@@ -9,9 +10,9 @@ export default function Home() {
         <title>Panel de Servicios</title>
       </Head>
 
-      <LayoutCompleted view="Servicios">
+      <LayoutComplete2 view="Servicios">
         <DashboardLayout />
-      </LayoutCompleted>
+      </LayoutComplete2>
 
     </>
   )

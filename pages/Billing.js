@@ -1,5 +1,6 @@
 import Head from 'next/head';
-import LayoutCompleted from '../Components/Principal/LayoutComplete';
+// import LayoutCompleted from '../Components/Principal/LayoutComplete';
+import LayoutComplete2 from '../Components/Principal/LayaoutCompleteNew';
 import BillingLayout from '../Components/Billing/BillingLayout';
 
 export default function Home() {
@@ -8,9 +9,9 @@ export default function Home() {
       <Head>
         <title>Panel de Facturación</title>
       </Head>
-      <LayoutCompleted view="Facturación Eletrónica">
+      <LayoutComplete2 view="Facturación Eletrónica">
         <BillingLayout/>
-      </LayoutCompleted> 
+      </LayoutComplete2> 
     </>
   )
 }

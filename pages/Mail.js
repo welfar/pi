@@ -1,5 +1,6 @@
 import Head from 'next/head';
-import LayoutCompleted from '../Components/Principal/LayoutComplete';
+// import LayoutCompleted from '../Components/Principal/LayoutComplete';
+import LayoutComplete2 from '../Components/Principal/LayaoutCompleteNew';
 import Admin from '../Components/Mail/MailLayout';
 
 
@@ -10,9 +11,9 @@ export default function Home() {
         <title>Panel de Correo</title>
       </Head>
 
-      <LayoutCompleted view="Correo">
+      <LayoutComplete2 view="Correo">
         <Admin/>
-      </LayoutCompleted>
+      </LayoutComplete2>
 
     </>
   )

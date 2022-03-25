@@ -6,38 +6,17 @@ import Navleft from "./Navleft";
 import Header from "./Header";
 import { COLOR_AZUL_OSCURO, COLOR_GRIS_CLARO } from "../../lib/util/Colors";
 
-class LayoutCompleted extends Component {
-  /* const [navleftHide, setNavleftHide] = useRecoilState(navleftHideState);
-   */
+export const LayoutComplete2 = ({view, children}) => {
+  
+  const [navleftHide, setNavleftHide] = useRecoilState(navleftHideState);
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      navleftHide: false,
-    };
-  }
-
-  _handleNavleft = () => {
-    this.setState({
-      navleftHide: !this.state.navleftHide,
-    });
+  const handleNavleft = () => {
+    setNavleftHide(navleftHide => !navleftHide);
   };
 
-  render() {
-    /* const [navleftHide, setNavleftHide] = useRecoilState(navleftHideState);
-    _handleNavleft = () => {
-      setNavleftHide({
-        navleftHide,
-      });
-    }; */
-
-    const { navleftHide } = this.state;
-
-    const { children } = this.props;
-
-    return (
-      <React.Fragment>
-        <Head>
+  return (
+    <>
+       <Head>
           <meta charSet="utf-8" />
           <meta
             name="viewport"
@@ -85,11 +64,11 @@ class LayoutCompleted extends Component {
               <div className="navleft__body--hide">
                 <Navleft
                   navleftHide={navleftHide}
-                  handleNavleft={this._handleNavleft}
+                  handleNavleft={handleNavleft}
                 />
               </div>
               <div className="body__content--hide">
-                <Header view={this.props.view} />
+                <Header view={view} />
                 {children}
               </div>
             </div>
@@ -98,11 +77,11 @@ class LayoutCompleted extends Component {
               <div className="navleft__body">
                 <Navleft
                   navleftHide={navleftHide}
-                  handleNavleft={this._handleNavleft}
+                  handleNavleft={handleNavleft}
                 />
               </div>
               <div className="body__content">
-                <Header view={this.props.view} />
+                <Header view={view} />
                 {children}
               </div>
             </div>
@@ -180,9 +159,8 @@ class LayoutCompleted extends Component {
             }
           }
         `}</style>
-      </React.Fragment>
-    );
-  }
+    </>
+  );
 }
 
-export default LayoutCompleted;
+export default LayoutComplete2;
