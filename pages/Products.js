@@ -1,5 +1,6 @@
 import Head from 'next/head';
-import LayoutCompleted from '../Components/Principal/LayoutComplete';
+// import LayoutCompleted from '../Components/Principal/LayoutComplete';
+import LayoutComplete2 from '../Components/Principal/LayaoutCompleteNew';
 import Products from '../Components/Product/ProductsLayout';
 
 
@@ -11,9 +12,9 @@ export default function Home() {
         <title>Panel de Productos</title>
       </Head>
 
-      <LayoutCompleted view="Productos">
+      <LayoutComplete2 view="Productos">
         <Products/>
-      </LayoutCompleted>
+      </LayoutComplete2>
     </>
   )
 }

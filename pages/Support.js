@@ -1,5 +1,6 @@
 import Head from 'next/head';
-import LayoutCompleted from '../Components/Principal/LayoutComplete';
+// import LayoutCompleted from '../Components/Principal/LayoutComplete';
+import LayoutComplete2 from '../Components/Principal/LayaoutCompleteNew';
 import SupportLayout from '../Components/Support/SupportLayout';
 
 
@@ -11,9 +12,9 @@ export default function Home() {
         <title>Panel de Soporte</title>
       </Head>
 
-      <LayoutCompleted view="Soporte">
+      <LayoutComplete2 view="Soporte">
         <SupportLayout/>
-      </LayoutCompleted>
+      </LayoutComplete2>
 
     </>
   )
