@@ -24,13 +24,6 @@ class LayoutCompleted extends Component {
   };
 
   render() {
-    /* const [navleftHide, setNavleftHide] = useRecoilState(navleftHideState);
-    _handleNavleft = () => {
-      setNavleftHide({
-        navleftHide,
-      });
-    }; */
-
     const { navleftHide } = this.state;
 
     const { children } = this.props;
