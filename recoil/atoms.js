@@ -12,7 +12,9 @@ export const registerSelectState = atom({
 
 export const dataTableRegAState = atom({
   key: "dataTableRegAState",
-  default: [],
+  default: [{ subdomain: "webmail", domain: "pepito.com",ippurpose: "1.1.1.1" },
+            { subdomain: "email", domain: "pepito.com",ippurpose: "2.2.2.2" },
+            { subdomain: "site", domain: "pepito.com",ippurpose: "3.3.3.3" },],
 });
 
 export const dataTableRegAAAAState = atom({

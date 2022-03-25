@@ -8,7 +8,7 @@ import RegATable from "../RenderTable/RegATable";
 const RegisterA = () => {
   const [data, setData] = useRecoilState(dataTableRegAState);
 
-  const [item, setItem] = useState({ domain: "pepito.com.co" });
+  const [item, setItem] = useState({ subdomain: "" ,domain: "pepito.com.co", ippurpose: ""});
   const [editItem, setEditItem] = useState(false);
   const [id, setId] = useState("");
   const [errors, setErrors] = useState({});
@@ -16,9 +16,9 @@ const RegisterA = () => {
   const ipv4Validation = () => {
     let errors = {};
     let regexIPv4 =
-      /^(\b25[0-5]|\b2[0-4][0-9]|\b[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}/;
+      /^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
 
-    if (!item.ippurpose) {
+    if (!item.ippurpose || item.ippurpose === "") {
       errors.ippurpose = "El campo 'IPv4 Destino' es requerido";
     } else if (!regexIPv4.test(item.ippurpose.trim())) {
       errors.ippurpose = "Este campo sólo acepta números";
@@ -28,11 +28,13 @@ const RegisterA = () => {
 
   const sendData = (e) => {
     e.preventDefault();
+    console.log(item);
+    console.log(data);
     if (data.some((elem) => elem.subdomain === item.subdomain)) {
       alert("El subdominio esta repetido");
     } else {
       setData([...data, item]);
-      setItem({ domain: "pepito.com.co" });
+      setItem({ subdomain: "" ,domain: "pepito.com.co", ippurpose: ""});
     }
   };
 
@@ -43,7 +45,7 @@ const RegisterA = () => {
     );
     setData(editedItems);
     setEditItem(false);
-    setItem({ domain: "pepito.com.co" });
+    setItem({ subdomain: "" ,domain: "pepito.com.co", ippurpose: ""});
     setId("");
   };
 
@@ -70,7 +72,7 @@ const RegisterA = () => {
             placeholder="www"
             required
             onChange={handleChange}
-            value={item.subdomain !== undefined ? item.subdomain : ""}
+            value={item.subdomain ? item.subdomain : ""}
           />
         </div>
 
@@ -101,22 +103,23 @@ const RegisterA = () => {
             name="ippurpose"
             placeholder="200.25.0.235"
             onChange={(e) => handleChange(e)}
-            value={item.ippurpose !== undefined ? item.ippurpose : ""}
+            value={item.ippurpose ? item.ippurpose : ""}
             required
           />
           {errors.ippurpose && <p className="msg">{errors.ippurpose}</p>}
         </div>
-
         <button
           className={
             editItem
               ? "itemContainerBotton__buttons--save"
               : "itemContainerBotton__buttons--plus"
           }
-          onClick={(e) => {
-            editItem ? updateItem(e) : sendData(e);
-          }}
-          disabled={item.subdomain === "" || item.ippurpose === ""}
+          disabled={ item.subdomain === "" || item.ippurpose === ""}
+          onClick={
+            editItem
+              ? (e) => updateItem(e)
+              : (e) => sendData(e)
+          }
         >
           <div
             className={
